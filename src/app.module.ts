@@ -4,6 +4,11 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CommonModule } from './common/common.module';
+import { CategoriesModule } from './categories/categories.module';
+import { BrandsModule } from './brands/brands.module';
+import { AssignmentsModule } from './assignments/assignments.module';
+import { FilesModule } from './files/files.module';
+import { EntitiesModule } from './entities/entities.module';
 
 @Module({
   imports: [
@@ -21,7 +26,7 @@ import { CommonModule } from './common/common.module';
       synchronize: true
     }),
     // App Modules
-    ItemsModule, AuthModule, CommonModule
+    ItemsModule, AuthModule, CommonModule, CategoriesModule, BrandsModule, AssignmentsModule, FilesModule, EntitiesModule
   ],
 })
 export class AppModule {}

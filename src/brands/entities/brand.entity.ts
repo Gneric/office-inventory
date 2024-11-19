@@ -15,6 +15,6 @@ export class Brand {
     createdAt : number
 
     @Column('number', {})
-    updatedAt : number
+    updatedAt? : number
 
 }

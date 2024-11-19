@@ -15,6 +15,6 @@ export class Category {
     createdAt : number
 
     @Column('number', {})
-    updatedAt : number
+    updatedAt? : number
 
 }

@@ -23,4 +23,7 @@ export class Assignment {
     @Column('text', {})
     message : string
 
+    @Column('number', {})
+    createdAt: number
+
 }

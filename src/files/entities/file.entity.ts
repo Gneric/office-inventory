@@ -16,6 +16,6 @@ export class File {
     type : string
 
     @Column('text', {})
-    attachment_id : string
+    attachmentId : string
     
 }

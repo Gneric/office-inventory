@@ -18,6 +18,6 @@ export class Entity {
     createdAt: number
 
     @Column('number', {})
-    updatedAt: number
+    updatedAt?: number
 
 }

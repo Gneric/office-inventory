@@ -1,5 +1,7 @@
-import { Column, PrimaryGeneratedColumn } from "typeorm"
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
 
+
+@Entity({ name: 'items' })
 export class Item {
 
     @PrimaryGeneratedColumn('uuid')
@@ -21,15 +23,15 @@ export class Item {
     brand_id : string
 
     @Column('text', {})
-    optimized : string
+    optimized : boolean
 
     @Column('text', {})
     specs : string
 
     @Column('numeric', {})
-    created_at : number
+    createdAt : number
 
     @Column('numeric', {})
-    update_at : number
+    updatedAt?: number
 
 }

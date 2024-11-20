@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger'
 import * as bycrpt from 'bcrypt'
-import { BeforeInsert, Column, PrimaryGeneratedColumn } from 'typeorm'
+import { Item } from 'src/items/entities/item.entity'
+import { BeforeInsert, Column, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
 
 export class User {
 
@@ -45,6 +46,13 @@ export class User {
     })
     @Column('boolean', { default: true })
     isActive?: boolean
+
+    @OneToMany(
+        () => Item,
+        ( item ) => item.createdBy,
+        { eager: true }
+    )
+    item?: Item[]
 
     @BeforeInsert()
     hashPassword() {

@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
+import { User } from "src/auth/entities/user.entity"
+import { File } from "src/files/entities/file.entity"
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm"
 
 
 @Entity({ name: 'items' })
@@ -33,5 +35,18 @@ export class Item {
 
     @Column('numeric', {})
     updatedAt?: number
+
+    @ManyToOne(
+        () => User,
+        ( user ) => user.item
+    )
+    createdBy: User
+
+    @OneToMany(
+        () => File,
+        ( file ) => file.itemId,
+        { eager: true }
+    )
+    files?: File[]
 
 }

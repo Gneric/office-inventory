@@ -9,6 +9,7 @@ import { BrandsModule } from './brands/brands.module';
 import { AssignmentsModule } from './assignments/assignments.module';
 import { FilesModule } from './files/files.module';
 import { EntitiesModule } from './entities/entities.module';
+import { PeopleModule } from './people/people.module';
 
 @Module({
   imports: [
@@ -26,7 +27,7 @@ import { EntitiesModule } from './entities/entities.module';
       synchronize: true
     }),
     // App Modules
-    ItemsModule, AuthModule, CommonModule, CategoriesModule, BrandsModule, AssignmentsModule, FilesModule, EntitiesModule
+    ItemsModule, AuthModule, CommonModule, CategoriesModule, BrandsModule, AssignmentsModule, FilesModule, EntitiesModule, PeopleModule
   ],
 })
 export class AppModule {}

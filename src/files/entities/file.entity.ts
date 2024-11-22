@@ -1,4 +1,5 @@
-import { Column, PrimaryGeneratedColumn } from "typeorm"
+import { Item } from "src/items/entities/item.entity"
+import { Column, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
 
 export class File {
 
@@ -15,7 +16,10 @@ export class File {
     @Column('text', {}) 
     type : string
 
-    @Column('text', {})
-    itemId : string
+    @ManyToOne(
+        () => Item,
+        ( item ) => item.file
+    )
+    itemId: Item
     
 }

@@ -28,7 +28,7 @@ export class Person {
 
     @ApiProperty({
         default: true,
-        description: 'user active flag '
+        description: 'user active flag'
     })
     @Column('boolean', { default: true })
     isActive: boolean

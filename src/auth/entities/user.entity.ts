@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger'
 import * as bycrpt from 'bcrypt'
 import { Item } from 'src/items/entities/item.entity'
-import { Person } from 'src/people/entities/person.entity'
+import { Person } from 'src/person/entities/person.entity'
 import { BeforeInsert, Column, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
 
 export class User {

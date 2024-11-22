@@ -8,8 +8,7 @@ import { CategoriesModule } from './categories/categories.module';
 import { BrandsModule } from './brands/brands.module';
 import { AssignmentsModule } from './assignments/assignments.module';
 import { FilesModule } from './files/files.module';
-import { EntitiesModule } from './entities/entities.module';
-import { PeopleModule } from './people/people.module';
+import { PersonModule } from './person/person.module';
 
 @Module({
   imports: [
@@ -27,7 +26,7 @@ import { PeopleModule } from './people/people.module';
       synchronize: true
     }),
     // App Modules
-    ItemsModule, AuthModule, CommonModule, CategoriesModule, BrandsModule, AssignmentsModule, FilesModule, EntitiesModule, PeopleModule
+    ItemsModule, AuthModule, CommonModule, CategoriesModule, BrandsModule, AssignmentsModule, FilesModule, PersonModule
   ],
 })
 export class AppModule {}

@@ -1,21 +1,28 @@
-import { Column, PrimaryGeneratedColumn } from "typeorm"
+import { User } from "src/auth/entities/user.entity"
+import { Item } from "src/items/entities/item.entity"
+import { Person } from "src/person/entities/person.entity"
+import { Column, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm"
 
 export class Assignment {
 
     @PrimaryGeneratedColumn('uuid')
     id : string
 
-    @Column('text', {})
-    item_id : string
+    @OneToOne(() => Item, { cascade: true, eager: true } )
+    @JoinColumn({ name: 'item_id' })
+    item: Item
 
-    @Column('text', {})
-    supervisor_id : string
+    @OneToOne(() => User, { cascade: true, eager: true } )
+    @JoinColumn({ name: 'supervisor_id' })
+    supervisor: User
 
-    @Column('text', {})
-    fromUser : string
+    @OneToOne(() => Person, { cascade: true, eager: true } )
+    @JoinColumn({ name: 'fromPerson'})
+    fromPerson: Person
 
-    @Column('text', {})
-    toUser : string
+    @OneToOne(() => Person, { cascade: true, eager: true } )
+    @JoinColumn({ name: 'toPerson'})
+    toPerson: Person
 
     @Column('boolean', {})
     damaged : boolean

@@ -33,11 +33,4 @@ export class Person {
     @Column('boolean', { default: true })
     isActive: boolean
 
-    @ApiProperty({
-        default: false,
-        description: 'user deleted flag'
-    })
-    @Column('boolean', { default: false })
-    isDeleted: boolean
-
 }

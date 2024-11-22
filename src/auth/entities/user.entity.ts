@@ -1,7 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger'
 import * as bycrpt from 'bcrypt'
 import { Item } from 'src/items/entities/item.entity'
-import { BeforeInsert, Column, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Person } from 'src/people/entities/person.entity'
+import { BeforeInsert, Column, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
 
 export class User {
 
@@ -12,14 +13,6 @@ export class User {
     })
     @PrimaryGeneratedColumn('uuid')
     id: string
-
-    @ApiProperty({ 
-        example: 'username@emaildomain.com',
-        description: 'user email',
-        uniqueItems: true
-    })
-    @Column('text', { unique: true })
-    email: string
 
     @ApiProperty({
         description: 'User name'
@@ -34,18 +27,15 @@ export class User {
     password: string
 
     @ApiProperty({
-        example: 'Super User',
-        description: "user's fullName"
-    })
-    @Column('text', {})
-    fullName: string
-
-    @ApiProperty({
         default: true,
         description: 'user active flag '
     })
     @Column('boolean', { default: true })
     isActive?: boolean
+
+    @OneToOne(() => Person, { cascade: true, eager: true }) // Cascade to save person automatically when saving user
+    @JoinColumn({ name: 'personId' }) // Maps the foreign key
+    person: Person;
 
     @OneToMany(
         () => Item,

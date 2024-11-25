@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ItemImage } from 'src/items/entities';
+import { Item, ItemImage } from 'src/items/entities';
 import { ItemsService } from 'src/items/items.service';
 import { Repository } from 'typeorm';
 
@@ -24,6 +24,18 @@ export class FilesService {
         this.itemImageRepository.save({ item, url: file.filename })
       )
     })
-
   }
+
+  async deleteFiles(id: string, files: string[]) {
+    const item : Item = await this.itemService.findOne(id)
+
+    item.files.forEach( file => {
+      if( files.includes(file.id) ) {
+        this.itemImageRepository.delete({ id: file.id })
+      }
+    })
+    
+    return await this.itemService.findOne(id)
+  }
+  
 }

@@ -14,7 +14,7 @@ export class ItemsController {
 
   @Get()
   findAll() {
-    return this.itemsService.findAll();
+    return this.itemsService.findAll()
   }
 
   @Get(':id')

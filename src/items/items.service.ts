@@ -2,7 +2,7 @@ import { BadRequestException, Injectable, InternalServerErrorException, NotFound
 import { CreateItemDto } from './dto/create-item.dto';
 import { UpdateItemDto } from './dto/update-item.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Item } from './entities/item.entity';
+import { Item, ItemImage } from './entities';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -11,15 +11,21 @@ export class ItemsService {
   constructor(
 
     @InjectRepository(Item)
-    private readonly itemRepository: Repository<Item>
+    private readonly itemRepository: Repository<Item>,
+    @InjectRepository(ItemImage)
+    private readonly itemImageRepository: Repository<ItemImage>
     
   ) {}
 
   async create(createItemDto: CreateItemDto) {
-    const item = await this.itemRepository.create(createItemDto)
+    const item = this.itemRepository.create({
+      ...createItemDto,
+    })
+
     await this.itemRepository.save(item)
     return item
   }
+
 
   async findAll() {
     return await this.itemRepository.find({})

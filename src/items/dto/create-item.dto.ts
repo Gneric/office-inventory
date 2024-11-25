@@ -1,3 +1,4 @@
+
 import { IsBoolean, IsNumber, IsOptional, IsString, MinLength } from "class-validator"
 
 export class CreateItemDto {
@@ -35,7 +36,5 @@ export class CreateItemDto {
     @IsNumber()
     @IsOptional()
     updatedAt? : number
-
-
 
 }

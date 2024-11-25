@@ -1,7 +1,7 @@
 import { User } from "src/auth/entities/user.entity"
 import { Brand } from "src/brands/entities/brand.entity"
 import { Category } from "src/categories/entities/category.entity"
-import { File } from "src/files/entities/file.entity"
+import { ItemImage } from "src/items/entities/itemImage.entity"
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm"
 
 
@@ -40,10 +40,10 @@ export class Item {
     @Column('numeric', {})
     updatedAt?: number
 
-    @ManyToOne( () => User, ( user ) => user.item )
+    @ManyToOne( () => User, ( user ) => user.items, { eager: true } )
     createdBy: User
 
-    @OneToMany( () => File, ( file ) => file.itemId, { eager: true } )
-    file?: File[]
+    @OneToMany( () => ItemImage, ( itemImage ) => itemImage.itemId, { cascade: true, eager: true } )
+    files?: ItemImage[]
 
 }

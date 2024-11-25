@@ -1,26 +1,29 @@
 import { Injectable } from '@nestjs/common';
-import { CreateFileDto } from './dto/create-file.dto';
-import { UpdateFileDto } from './dto/update-file.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { ItemImage } from 'src/items/entities';
+import { ItemsService } from 'src/items/items.service';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class FilesService {
-  create(createFileDto: CreateFileDto) {
-    return 'This action adds a new file';
-  }
+  
+  constructor(
+    @InjectRepository(ItemImage)
+    private readonly itemImageRepository: Repository<ItemImage>,
 
-  findAll() {
-    return `This action returns all files`;
-  }
+    private readonly itemService: ItemsService
+  ){}
 
-  findOne(id: number) {
-    return `This action returns a #${id} file`;
-  }
+  attachFileToItem(id: string, files: Express.Multer.File[]) {
+    const item = this.itemService.findOne(id)
 
-  update(id: number, updateFileDto: UpdateFileDto) {
-    return `This action updates a #${id} file`;
-  }
+    const promises = []
 
-  remove(id: number) {
-    return `This action removes a #${id} file`;
+    files.forEach( file => {
+      promises.push(
+        this.itemImageRepository.save({ item, url: file.filename })
+      )
+    })
+
   }
 }

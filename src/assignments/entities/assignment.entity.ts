@@ -1,6 +1,6 @@
 import { User } from "src/auth/entities/user.entity"
 import { Item } from "src/items/entities/item.entity"
-import { Person } from "src/person/entities/person.entity"
+import { Person } from "src/persons/entities/person.entity"
 import { Column, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm"
 
 export class Assignment {

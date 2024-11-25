@@ -8,7 +8,7 @@ import { CategoriesModule } from './categories/categories.module';
 import { BrandsModule } from './brands/brands.module';
 import { AssignmentsModule } from './assignments/assignments.module';
 import { FilesModule } from './files/files.module';
-import { PersonModule } from './person/person.module';
+import { PersonModule } from './persons/person.module';
 
 @Module({
   imports: [

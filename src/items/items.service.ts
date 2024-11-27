@@ -60,7 +60,8 @@ export class ItemsService {
 
   async remove(id: string) {
     const item = await this.findOne(id)
-    await this.itemRepository.remove(item)
+    item.isActive = false
+    await this.itemRepository.save(item)
     return
   }
 

@@ -48,8 +48,9 @@ export class PersonService {
   }
 
   async remove(id: string) {
-    const person = await this.findOne(id);
-    await this.personRepository.remove(person);
+    const person = await this.findOne(id)
+    person.isActive = false
+    await this.personRepository.save(person)
     return
   }
 }

@@ -40,6 +40,9 @@ export class Item {
     @Column('numeric', {})
     updatedAt?: number
 
+    @Column('boolean', { default: true })
+    isActive?: boolean
+
     @ManyToOne( () => User, ( user ) => user.items )
     createdBy: User
 

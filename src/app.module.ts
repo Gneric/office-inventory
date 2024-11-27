@@ -26,7 +26,14 @@ import { PersonModule } from './persons/person.module';
       synchronize: true
     }),
     // App Modules
-    ItemsModule, AuthModule, CommonModule, CategoriesModule, BrandsModule, AssignmentsModule, FilesModule, PersonModule
+    AuthModule, 
+    ItemsModule,
+    CommonModule, 
+    CategoriesModule, 
+    BrandsModule, 
+    AssignmentsModule, 
+    FilesModule, 
+    PersonModule
   ],
 })
 export class AppModule {}

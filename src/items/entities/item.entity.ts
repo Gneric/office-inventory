@@ -40,7 +40,7 @@ export class Item {
     @Column('numeric', {})
     updatedAt?: number
 
-    @ManyToOne( () => User, ( user ) => user.items, { eager: true } )
+    @ManyToOne( () => User, ( user ) => user.items )
     createdBy: User
 
     @OneToMany( () => ItemImage, ( itemImage ) => itemImage.itemId, { cascade: true, eager: true } )

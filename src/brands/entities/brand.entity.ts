@@ -1,5 +1,6 @@
-import { Column, PrimaryGeneratedColumn } from "typeorm"
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
 
+@Entity({ name: 'brands' })
 export class Brand {
 
     @PrimaryGeneratedColumn('uuid')
@@ -11,10 +12,10 @@ export class Brand {
     @Column('text', {})
     name : string
 
-    @Column('number', {})
+    @Column('numeric', {})
     createdAt : number
 
-    @Column('number', {})
+    @Column('numeric', {})
     updatedAt? : number
 
 }

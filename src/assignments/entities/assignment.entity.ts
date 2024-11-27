@@ -1,8 +1,9 @@
 import { User } from "src/auth/entities/user.entity"
 import { Item } from "src/items/entities/item.entity"
 import { Person } from "src/persons/entities/person.entity"
-import { Column, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm"
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm"
 
+@Entity({ name: 'assignments' })
 export class Assignment {
 
     @PrimaryGeneratedColumn('uuid')
@@ -30,7 +31,7 @@ export class Assignment {
     @Column('text', {})
     message : string
 
-    @Column('number', {})
+    @Column('numeric', {})
     createdAt: number
 
 }

@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
-import * as bycrpt from 'bcrypt'
+import * as bycrpt from 'bcryptjs'
 import { Item } from 'src/items/entities/item.entity'
 import { Person } from 'src/persons/entities/person.entity'
 import { BeforeInsert, Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm'

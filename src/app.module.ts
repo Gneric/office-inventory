@@ -17,8 +17,8 @@ import { PersonModule } from './persons/person.module';
     // Connects the app with the ORM which connects to the DB
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DB_HOST,
-      port: +process.env.DB_PORT,
+      host: process.env.DATABASE_HOST,
+      port: +process.env.DATABASE_PORT,
       database: process.env.DB_NAME,
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
